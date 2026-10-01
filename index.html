@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Context Experts Agencies Limited | Computer Science</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        header {
+            background: #071b35;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00c6ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00c6ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            background:
+                linear-gradient(rgba(4,20,40,0.85), rgba(4,20,40,0.9)),
+                radial-gradient(circle at center, #087aa8, #06182d);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00c6ff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #dceaf5;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #00aeea;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 7px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #008dcc;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00c6ff;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h2 {
+            font-size: 38px;
+            color: #071b35;
+            margin-bottom: 12px;
+        }
+
+        .title p {
+            color: #667;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-box {
+            background: #071b35;
+            color: white;
+            padding: 45px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .about-box .computer {
+            font-size: 90px;
+            margin-bottom: 20px;
+        }
+
+        .about-text h3 {
+            color: #071b35;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* SERVICES */
+        .services {
+            background: #f4f7fb;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #071b35;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* COURSES */
+        .courses {
+            background: #071b35;
+            color: white;
+        }
+
+        .courses .title h2 {
+            color: white;
+        }
+
+        .courses .title p {
+            color: #c5d4e3;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .course {
+            background: #102b4b;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #00c6ff;
+        }
+
+        .course h3 {
+            margin-bottom: 8px;
+        }
+
+        /* ATTACHMENT */
+        .attachment {
+            background: white;
+        }
+
+        .attachment-box {
+            background: linear-gradient(135deg, #071b35, #0b4c78);
+            color: white;
+            padding: 50px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .attachment-box h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .attachment-box p {
+            max-width: 750px;
+            margin: auto auto 25px;
+            color: #d9e8f4;
+        }
+
+        /* PROJECTS */
+        .projects {
+            background: #f4f7fb;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .project-top {
+            height: 150px;
+            background: linear-gradient(135deg, #087aa8, #071b35);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: white;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: #071b35;
+            margin-bottom: 10px;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: #071b35;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            margin: 20px 0;
+        }
+
+        .contact-item strong {
+            color: #00c6ff;
+        }
+
+        form {
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-radius: 15px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0 18px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 130px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #030d1a;
+            color: #aebdca;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-grid h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-grid a {
+            color: #aebdca;
+            text-decoration: none;
+        }
+
+        .footer-grid a:hover {
+            color: #00c6ff;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #203044;
+            margin-top: 35px;
+            padding-top: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 850px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards,
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .course-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 550px) {
+
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<header>
+    <nav>
+
+        <div class="logo">
+            CONTEXT <span>EXPERTS</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#department">Department</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#attachment">Attachment</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Computer Science<br>
+            <span>Department</span>
+        </h1>
+
+        <p>
+            Context Experts Agencies Limited – Ruiru
+        </p>
+
+        <p>
+            Developing practical technology skills through programming,
+            web development, databases, networking, cybersecurity and
+            modern digital innovation.
+        </p>
+
+        <a href="#department" class="btn">
+            Explore Department
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+            Contact Us
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="title">
+            <h2>About Context Experts</h2>
+
+            <p>
+                A practical learning environment focused on developing
+                technology and professional skills.
+            </p>
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-box">
+
+                <div class="computer">
+                    💻
+                </div>
+
+                <h2>
+                    Computer Science
+                </h2>
+
+                <p>
+                    Learn technology by creating technology.
+                </p>
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>
+                    Building Future Technology Professionals
+                </h3>
+
+                <p>
+                    The Computer Science Department at Context Experts
+                    Agencies Limited provides students with practical
+                    exposure to modern computing and information
+                    technology.
+                </p>
+
+                <p>
+                    Students can develop skills in programming,
+                    website development, databases, networking,
+                    cybersecurity and digital technologies.
+                </p>
+
+                <p>
+                    The department emphasizes practical learning,
+                    problem solving, teamwork, creativity and project
+                    development.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DEPARTMENT ================= -->
+
+<section class="services" id="department">
+
+    <div class="container">
+
+        <div class="title">
+
+            <h2>
+                Computer Science Department
+            </h2>
+
+            <p>
+                Explore our major technology areas.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">💻</div>
+
+                <h3>
+                    Programming
+                </h3>
+
+                <p>
+                    Learn programming concepts, algorithms,
+                    data structures and software development.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🌐</div>
+
+                <h3>
+                    Web Development
+                </h3>
+
+                <p>
+                    Build modern websites using HTML, CSS,
+                    JavaScript and other web technologies.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🛡️</div>
+
+                <h3>
+                    Cybersecurity
+                </h3>
+
+                <p>
+                    Learn computer security principles,
+                    network security and safe digital practices.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🗄️</div>
+
+                <h3>
+                    Database Systems
+                </h3>
+
+                <p>
+                    Understand database design, SQL,
+                    data storage and information management.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🌐</div>
+
+                <h3>
+                    Computer Networking
+                </h3>
+
+                <p>
+                    Learn networks, communication devices,
+                    connectivity and network configuration.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🤖</div>
+
+                <h3>
+                    Artificial Intelligence
+                </h3>
+
+                <p>
+                    Explore artificial intelligence,
+                    machine learning and emerging technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COURSES ================= -->
+
+<section class="courses" id="courses">
+
+    <div class="container">
+
+        <div class="title">
+
+            <h2>
+                Learning Areas
+            </h2>
+
+            <p>
+                Practical technical skills for Computer Science students.
+            </p>
+
+        </div>
+
+
+        <div class="course-list">
+
+            <div class="course">
+                <h3>01. HTML & CSS</h3>
+                <p>
+                    Create professional and responsive websites.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>02. JavaScript</h3>
+                <p>
+                    Add functionality and interaction to websites.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>03. Java Programming</h3>
+                <p>
+                    Develop programming and object-oriented
+                    programming skills.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>04. Python Programming</h3>
+                <p>
+                    Learn Python programming and application development.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>05. Database Management</h3>
+                <p>
+                    Learn SQL, database structures and data management.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>06. Computer Networking</h3>
+                <p>
+                    Understand networks, devices and communication.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>07. Cybersecurity</h3>
+                <p>
+                    Learn security awareness and basic protection concepts.
+                </p>
+            </div>
+
+            <div class="course">
+                <h3>08. Software Development</h3>
+                <p>
+                    Learn the process of planning, developing and
+                    testing software.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ATTACHMENT ================= -->
+
+<section class="attachment" id="attachment">
+
+    <div class="container">
+
+        <div class="attachment-box">
+
+            <h2>
+                Industrial Attachment
+            </h2>
+
+            <p>
+                Our practical training environment helps students
+                apply classroom knowledge to real-world technology
+                tasks and projects.
+            </p>
+
+            <a href="#contact" class="btn">
+                Apply / Enquire
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section class="projects" id="projects">
+
+    <div class="container">
+
+        <div class="title">
+
+            <h2>
+                Student Projects
+            </h2>
+
+            <p>
+                Practical projects that demonstrate technical
+                knowledge and creativity.
+            </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+            <div class="project">
+
+                <div class="project-top">
+                    🌐
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Business Website
+                    </h3>
+
+                    <p>
+                        Development of responsive business websites
+                        using HTML, CSS and JavaScript.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-top">
+                    📱
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Mobile Application
+                    </h3>
+
+                    <p>
+                        Design and development of mobile application
+                        concepts solving real-world problems.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-top">
+                    🗄️
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Database System
+                    </h3>
+
+                    <p>
+                        Creation of database systems for storing,
+                        managing and retrieving information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-top">
+                    🔐
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Cybersecurity Project
+                    </h3>
+
+                    <p>
+                        Security awareness and responsible computing
+                        projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-top">
+                    🤖
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        AI Project
+                    </h3>
+
+                    <p>
+                        Exploration of artificial intelligence and
+                        machine learning concepts.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-top">
+                    💻
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Software Project
+                    </h3>
+
+                    <p>
+                        Development of software solutions using
+                        programming and problem-solving techniques.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="title">
+
+            <h2>
+                Contact Us
+            </h2>
+
+            <p>
+                Get in touch with Context Experts Agencies Limited.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+
+                <h3>
+                    Context Experts Agencies Limited
+                </h3>
+
+                <p>
+                    Computer Science Department
+                </p>
+
+                <div class="contact-item">
+                    <strong>📍 Location</strong>
+                    <br>
+                    Ruiru, Kiambu County, Kenya
+                </div>
+
+                <div class="contact-item">
+                    <strong>📞 Telephone</strong>
+                    <br>
+                    0768 223 528
+                    <br>
+                    0114 470 190
+                </div>
+
+                <div class="contact-item">
+                    <strong>✉️ Email</strong>
+                    <br>
+                    academicperfect@gmail.com
+                </div>
+
+            </div>
+
+
+            <form id="contactForm">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>
+                    Enquiry
+                </label>
+
+                <select>
+
+                    <option>
+                        Computer Science
+                    </option>
+
+                    <option>
+                        Industrial Attachment
+                    </option>
+
+                    <option>
+                        Web Development
+                    </option>
+
+                    <option>
+                        Programming
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Message
+                </label>
+
+                <textarea
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>
+                Context Experts Agencies Limited
+            </h3>
+
+            <p>
+                Computer Science Department
+                <br>
+                Ruiru, Kenya
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <p>
+                <a href="#home">Home</a>
+            </p>
+
+            <p>
+                <a href="#about">About</a>
+            </p>
+
+            <p>
+                <a href="#courses">Courses</a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Contact
+            </h3>
+
+            <p>
+                0768 223 528
+            </p>
+
+            <p>
+                0114 470 190
+            </p>
+
+            <p>
+                academicperfect@gmail.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Context Experts Agencies Limited.
+        Computer Science Department.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    // CONTACT FORM
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Thank you for contacting Context Experts Agencies Limited!"
+        );
+
+        this.reset();
+
+    });
+
+</script>
+
+</body>
+</html>
