@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartBiz | Smart Shopping</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f6f8;
+    color:#222;
+}
+
+/* NAVBAR */
+nav{
+    background:#111827;
+    color:white;
+    padding:16px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+.logo span{
+    color:white;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.cart-btn{
+    border:0;
+    background:#38bdf8;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    min-height:560px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:30px;
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("smartbiz-home.jpg") center/cover no-repeat;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:58px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#38bdf8;
+}
+
+.hero p{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#38bdf8;
+    color:#111827;
+    padding:15px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* PRODUCTS */
+.products{
+    padding:70px 6%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.title p{
+    color:#666;
+}
+
+/* SEARCH */
+.search{
+    max-width:600px;
+    margin:0 auto 25px;
+}
+
+.search input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+/* CATEGORIES */
+.categories{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.categories button{
+    border:0;
+    padding:10px 17px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.categories button:hover,
+.categories button.active{
+    background:#111827;
+    color:white;
+}
+
+/* PRODUCT GRID */
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:white;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.product img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.info{
+    padding:18px;
+}
+
+.info h3{
+    margin-bottom:8px;
+}
+
+.info p{
+    color:#666;
+    min-height:40px;
+    font-size:14px;
+}
+
+.price{
+    display:block;
+    font-size:20px;
+    margin:14px 0;
+}
+
+.add{
+    width:100%;
+    padding:12px;
+    border:0;
+    background:#111827;
+    color:white;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add:hover{
+    background:#38bdf8;
+    color:#111827;
+}
+
+/* ABOUT */
+.about{
+    background:white;
+    padding:70px 10%;
+    text-align:center;
+}
+
+.about h2{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.about p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.8;
+    color:#555;
+}
+
+/* CONTACT */
+.contact{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:70px 10%;
+}
+
+.contact h2{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.contact p{
+    margin:10px;
+}
+
+.contact a{
+    color:#38bdf8;
+}
+
+/* CART */
+.cart{
+    position:fixed;
+    top:0;
+    right:-420px;
+    width:390px;
+    max-width:90%;
+    height:100vh;
+    background:white;
+    z-index:2000;
+    padding:25px;
+    box-shadow:-5px 0 20px rgba(0,0,0,.3);
+    transition:.4s;
+    overflow-y:auto;
+}
+
+.cart.open{
+    right:0;
+}
+
+.cart-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.close{
+    border:0;
+    background:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.cart-item{
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+}
+
+.remove{
+    background:#ef4444;
+    color:white;
+    border:0;
+    padding:6px 10px;
+    border-radius:5px;
+    margin-top:8px;
+    cursor:pointer;
+}
+
+.total{
+    font-size:22px;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.checkout{
+    width:100%;
+    padding:14px;
+    background:#16a34a;
+    color:white;
+    border:0;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#030712;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    nav{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    nav ul{
+        order:3;
+        width:100%;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product img{
+        height:170px;
+    }
+}
+
+@media(max-width:450px){
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        Smart<span>Biz</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="cart-btn" onclick="openCart()">
+        🛒 Cart (<span id="count">0</span>)
+    </button>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Welcome to <span>SmartBiz</span>
+        </h1>
+
+        <p>
+            Smart shopping made simple.
+            Find quality products at affordable prices.
+        </p>
+
+        <a href="#products" class="shop-btn">
+            Shop Now
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products" id="products">
+
+    <div class="title">
+
+        <h2>Our Products</h2>
+
+        <p>
+            Quality products at affordable prices.
+        </p>
+
+    </div>
+
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔎 Search products..."
+            onkeyup="searchProducts()"
+        >
+
+    </div>
+
+
+    <div class="categories">
+
+        <button class="active" onclick="filter('all',this)">
+            All
+        </button>
+
+        <button onclick="filter('electronics',this)">
+            Electronics
+        </button>
+
+        <button onclick="filter('fashion',this)">
+            Fashion
+        </button>
+
+        <button onclick="filter('home',this)">
+            Home
+        </button>
+
+        <button onclick="filter('school',this)">
+            School
+        </button>
+
+        <button onclick="filter('sports',this)">
+            Sports
+        </button>
+
+        <button onclick="filter('tech',this)">
+            Tech
+        </button>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+<!-- ================= ELECTRONICS ================= -->
+
+<div class="product" data-category="electronics">
+
+<img src="https://images.pexels.com/photos/10902918/pexels-photo-10902918.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Smartphone">
+
+<div class="info">
+
+<h3>Smartphone</h3>
+
+<p>Modern smartphone</p>
+
+<strong class="price">KSh 15,000</strong>
+
+<button class="add"
+onclick="add('Smartphone',15000)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="electronics">
+
+<img src="https://images.pexels.com/photos/6322724/pexels-photo-6322724.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Bluetooth Speaker">
+
+<div class="info">
+
+<h3>Bluetooth Speaker</h3>
+
+<p>Portable wireless speaker</p>
+
+<strong class="price">KSh 1,500</strong>
+
+<button class="add"
+onclick="add('Bluetooth Speaker',1500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="electronics">
+
+<img src="https://images.pexels.com/photos/37475677/pexels-photo-37475677.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Power Bank">
+
+<div class="info">
+
+<h3>Power Bank</h3>
+
+<p>Portable phone power bank</p>
+
+<strong class="price">KSh 1,800</strong>
+
+<button class="add"
+onclick="add('Power Bank',1800)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="electronics">
+
+<img src="https://images.pexels.com/photos/13727225/pexels-photo-13727225.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Wireless Earbuds">
+
+<div class="info">
+
+<h3>Wireless Earbuds</h3>
+
+<p>Bluetooth wireless earbuds</p>
+
+<strong class="price">KSh 2,000</strong>
+
+<button class="add"
+onclick="add('Wireless Earbuds',2000)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="electronics">
+
+<img src="https://images.pexels.com/photos/17775091/pexels-photo-17775091.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Smart Watch">
+
+<div class="info">
+
+<h3>Smart Watch</h3>
+
+<p>Modern digital smartwatch</p>
+
+<strong class="price">KSh 2,500</strong>
+
+<button class="add"
+onclick="add('Smart Watch',2500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="electronics">
+
+<img src="https://images.pexels.com/photos/8408537/pexels-photo-8408537.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Phone">
+
+<div class="info">
+
+<h3>Phone Accessory</h3>
+
+<p>Modern smartphone accessory</p>
+
+<strong class="price">KSh 800</strong>
+
+<button class="add"
+onclick="add('Phone Accessory',800)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= FASHION ================= -->
+
+<div class="product" data-category="fashion">
+
+<img src="https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="T Shirt">
+
+<div class="info">
+
+<h3>T-Shirt</h3>
+
+<p>Quality casual T-shirt</p>
+
+<strong class="price">KSh 1,000</strong>
+
+<button class="add"
+onclick="add('T-Shirt',1000)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="fashion">
+
+<img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Fashion">
+
+<div class="info">
+
+<h3>Casual Outfit</h3>
+
+<p>Modern casual fashion</p>
+
+<strong class="price">KSh 2,500</strong>
+
+<button class="add"
+onclick="add('Casual Outfit',2500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="fashion">
+
+<img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Sneakers">
+
+<div class="info">
+
+<h3>Sneakers</h3>
+
+<p>Stylish everyday sneakers</p>
+
+<strong class="price">KSh 3,500</strong>
+
+<button class="add"
+onclick="add('Sneakers',3500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="fashion">
+
+<img src="https://images.pexels.com/photos/16359294/pexels-photo-16359294.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Backpack">
+
+<div class="info">
+
+<h3>Backpack</h3>
+
+<p>Travel and school backpack</p>
+
+<strong class="price">KSh 1,500</strong>
+
+<button class="add"
+onclick="add('Backpack',1500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= HOME ================= -->
+
+<div class="product" data-category="home">
+
+<img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Water Bottle">
+
+<div class="info">
+
+<h3>Water Bottle</h3>
+
+<p>Reusable drinking bottle</p>
+
+<strong class="price">KSh 600</strong>
+
+<button class="add"
+onclick="add('Water Bottle',600)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="home">
+
+<img src="https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Home Light">
+
+<div class="info">
+
+<h3>LED Light</h3>
+
+<p>Energy saving home light</p>
+
+<strong class="price">KSh 300</strong>
+
+<button class="add"
+onclick="add('LED Light',300)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= SCHOOL ================= -->
+
+<div class="product" data-category="school">
+
+<img src="https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Notebook">
+
+<div class="info">
+
+<h3>Notebook</h3>
+
+<p>Quality writing notebook</p>
+
+<strong class="price">KSh 150</strong>
+
+<button class="add"
+onclick="add('Notebook',150)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="school">
+
+<img src="https://images.pexels.com/photos/15927825/pexels-photo-15927825.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Calculator">
+
+<div class="info">
+
+<h3>Scientific Calculator</h3>
+
+<p>Student calculator</p>
+
+<strong class="price">KSh 1,200</strong>
+
+<button class="add"
+onclick="add('Scientific Calculator',1200)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= SPORTS ================= -->
+
+<div class="product" data-category="sports">
+
+<img src="https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Football">
+
+<div class="info">
+
+<h3>Football</h3>
+
+<p>Quality training football</p>
+
+<strong class="price">KSh 1,500</strong>
+
+<button class="add"
+onclick="add('Football',1500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="sports">
+
+<img src="https://images.pexels.com/photos/1103836/pexels-photo-1103836.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Basketball">
+
+<div class="info">
+
+<h3>Basketball</h3>
+
+<p>Standard basketball</p>
+
+<strong class="price">KSh 2,000</strong>
+
+<button class="add"
+onclick="add('Basketball',2000)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= TECH ================= -->
+
+<div class="product" data-category="tech">
+
+<img src="https://images.pexels.com/photos/4792717/pexels-photo-4792717.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Laptop Stand">
+
+<div class="info">
+
+<h3>Laptop Stand</h3>
+
+<p>Adjustable laptop stand</p>
+
+<strong class="price">KSh 1,500</strong>
+
+<button class="add"
+onclick="add('Laptop Stand',1500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+<div class="product" data-category="tech">
+
+<img src="https://images.pexels.com/photos/34804003/pexels-photo-34804003.jpeg?auto=compress&cs=tinysrgb&w=800"
+alt="Laptop">
+
+<div class="info">
+
+<h3>Laptop Accessories</h3>
+
+<p>Computer workspace accessories</p>
+
+<strong class="price">KSh 2,500</strong>
+
+<button class="add"
+onclick="add('Laptop Accessories',2500)">
+Add to Cart
+</button>
+
+</div>
+</div>
+
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2>About SmartBiz</h2>
+
+<p>
+SmartBiz is a modern online shopping platform
+designed to make shopping simple, convenient and
+affordable. We provide electronics, fashion,
+home products, school supplies, sports products
+and technology accessories.
+</p>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2>Contact SmartBiz</h2>
+
+<p>📞 Phone: 07XX XXX XXX</p>
+
+<p>
+📧 Email:
+<a href="mailto:smartbiz@example.com">
+smartbiz@example.com
+</a>
+</p>
+
+<p>📍 Nairobi, Kenya</p>
+
+</section>
+
+
+<!-- CART -->
+
+<div class="cart" id="cart">
+
+<div class="cart-head">
+
+<h2>🛒 Your Cart</h2>
+
+<button class="close" onclick="closeCart()">×</button>
+
+</div>
+
+<div id="cartItems">
+
+<p>Your cart is empty.</p>
+
+</div>
+
+<div class="total">
+
+Total:
+<span id="total">KSh 0</span>
+
+</div>
+
+<button class="checkout" onclick="checkout()">
+Proceed to Checkout
+</button>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>© 2026 SmartBiz. All Rights Reserved.</p>
+
+<p>Smart Shopping • Quality Products • Affordable Prices</p>
+
+</footer>
+
+
+<script>
+
+let cart=[];
+
+
+/* ADD TO CART */
+
+function add(name,price){
+
+cart.push({
+name:name,
+price:price
+});
+
+updateCart();
+
+alert(name+" added to your cart!");
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+document.getElementById("count").textContent=cart.length;
+
+let box=document.getElementById("cartItems");
+
+let total=0;
+
+if(cart.length===0){
+
+box.innerHTML="<p>Your cart is empty.</p>";
+
+document.getElementById("total").textContent="KSh 0";
+
+return;
+
+}
+
+let html="";
+
+cart.forEach((item,index)=>{
+
+total+=item.price;
+
+html+=`
+
+<div class="cart-item">
+
+<h4>${item.name}</h4>
+
+<p>KSh ${item.price.toLocaleString()}</p>
+
+<button class="remove"
+onclick="removeItem(${index})">
+Remove
+</button>
+
+</div>
+
+`;
+
+});
+
+box.innerHTML=html;
+
+document.getElementById("total").textContent=
+"KSh "+total.toLocaleString();
+
+}
+
+
+/* REMOVE */
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+
+/* OPEN CART */
+
+function openCart(){
+
+document.getElementById("cart").classList.add("open");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+document.getElementById("cart").classList.remove("open");
+
+}
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+let value=
+document.getElementById("search").value.toLowerCase();
+
+let products=
+document.querySelectorAll(".product");
+
+products.forEach(product=>{
+
+let text=product.textContent.toLowerCase();
+
+product.style.display=
+text.includes(value) ? "block" : "none";
+
+});
+
+}
+
+
+/* FILTER */
+
+function filter(category,button){
+
+let products=
+document.querySelectorAll(".product");
+
+document
+.querySelectorAll(".categories button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+products.forEach(product=>{
+
+if(
+category==="all" ||
+product.dataset.category===category
+){
+
+product.style.display="block";
+
+}else{
+
+product.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+if(cart.length===0){
+
+alert("Your cart is empty.");
+
+return;
+
+}
+
+let total=0;
+
+cart.forEach(item=>{
+total+=item.price;
+});
+
+alert(
+"Thank you for shopping with SmartBiz!"+
+"\n\nOrder Total: KSh "+
+total.toLocaleString()+
+"\n\nM-Pesa checkout can be connected later."
+);
+
+}
+
+</script>
+
+</body>
+</html>
